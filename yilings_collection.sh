@@ -10,3 +10,10 @@ awk '{print "chr" $0}' C029_100k.domains.bed > C029_100k.domains.chr.bed
 sed -n l hg38.refGene.selected.txt 
 # 空格替换为tab
 sed 's/ /\t/g' hg38.refGene.selected.txt > hg38.refGene.selected.txt
+
+# 为当前工作目录中的所有文件添加.txt文件扩展名
+for i in $( ls ); do mv $i $i.txt; done
+
+# 将所有文件的.log扩展名更改为.txt
+for i in *.log; do mv -- "$i" "${i%.log}.txt"; done
+
